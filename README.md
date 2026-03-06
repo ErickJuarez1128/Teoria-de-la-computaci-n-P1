@@ -46,16 +46,16 @@ Para poder ejecutar esta aplicación, es necesario contar con el **Java Developm
 Puedes encontrar los archivos de este proyecto y el ejecutable en el siguiente repositorio: [https://github.com/emilioplacencia15-art/Teoria-de-la-computacion.git](https://github.com/emilioplacencia15-art/Teoria-de-la-computacion.git)
 
 1. **Descargar el archivo ejecutable:**
-   1.1 Dirígete a la sección de **Releases** (ubicada en el panel lateral derecho de este repositorio).
-   1.2 Haz clic y descarga el archivo llamado `Lenguajes-1.0-SNAPSHOT.jar`.
+   * Dirígete a la sección de **Releases** (ubicada en el panel lateral derecho de este repositorio).
+   * Haz clic y descarga el archivo llamado `Lenguajes-1.0-SNAPSHOT.jar`.
 
 2. **Abrir la terminal:**
-   2.1 Abre tu consola de comandos (CMD, PowerShell o la terminal de tu sistema operativo).
-   2.2 Navega usando el comando `cd` hasta la carpeta donde guardaste el archivo `.jar`. Por ejemplo, si está en tus descargas:
+   * Abre tu consola de comandos (CMD, PowerShell o la terminal de tu sistema operativo).
+   * Navega usando el comando `cd` hasta la carpeta donde guardaste el archivo `.jar`. Por ejemplo, si está en tus descargas:
      `cd Descargas` o en su defecto `cd Downloads`
 
 3. **Ejecutar el programa:**
-   3.1 Una vez ubicado en la carpeta correcta, escribe el siguiente comando y presiona Enter:
+   * Una vez ubicado en la carpeta correcta, escribe el siguiente comando y presiona Enter:
      `
      java -jar Lenguajes-1.0-SNAPSHOT.jar
      `
