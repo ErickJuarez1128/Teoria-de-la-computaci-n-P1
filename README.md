@@ -57,30 +57,48 @@ Para abordar los requerimientos de la práctica, el proyecto se dividió en tres
 ### 1. Menú Principal e Interfaz de Navegación
 Se diseñó una pantalla de inicio intuitiva que permite al usuario seleccionar qué tipo de operación desea realizar. Esta ventana actúa como un enrutador hacia los dos módulos principales de la aplicación.
 (Ver Figura 1)
+
+<p align="center">
 ![Image](https://github.com/user-attachments/assets/b9247299-8dbd-4aa3-8850-49ffb0b6efe4)
+</p>
+
 <div align="center"> Figura 1</div>
 Al presionar cualquiera de los botones, el sistema oculta la ventana actual e instancia la clase correspondiente (`Subcadenas` o `Cerraduras`), centrando la nueva ventana en pantalla.
 
 ### 2. Módulo de Operaciones: Subcadenas, Prefijos y Sufijos
 Para el primer requerimiento, se desarrolló una interfaz donde el usuario ingresa una cadena de texto base. Mediante un componente `JComboBox`, se puede elegir la operación específica a realizar. (Ver Figura 2)
+<p align="center">
 
 ![Image](https://github.com/user-attachments/assets/e19c2dc1-cf26-4e74-9437-9b8287f733f3)
+
+</p>
 <div align="center"> Figura 2</div>
 La lógica detrás de este módulo se controló mediante una estructura `if-else` que evalúa la opción seleccionada. Para los prefijos y sufijos, se implementaron ciclos `for` anidados que extraen los caracteres según los límites correspondientes, contemplando siempre el símbolo vacío ($\lambda$). (Ver Figura 3 y 4)
 
+<p align="center">
 ![Image](https://github.com/user-attachments/assets/407d7e3a-c27f-4d68-8bd0-2abe463a4338)
-<div align="center"> Figura 3</div>
 
+</p>
+<div align="center"> Figura 3</div>
+<p align="center">
 ![Image](https://github.com/user-attachments/assets/690ec703-5275-4240-8a29-111f6c6b9d73)
+
+</p>
 <div align="center"> Figura 4</div>
 
 ### 3. Módulo de Generación: Cerradura de Kleene y Positiva 
 El cálculo de lenguajes formales se gestionó en una ventana independiente. Aquí, el usuario ingresa un alfabeto (separado por comas) y un límite numérico para la longitud máxima de las cadenas a generar. (Ver Figura 5)
+
+<p align="center">
 ![Image](https://github.com/user-attachments/assets/7e0da5cf-b953-4743-8895-367e9008c040)
+</p>
  <div align="center">Figura 5</div> 
 Para generar las combinaciones de la Cerradura de Kleene y la Positiva, se extrae el alfabeto y se convierte el límite a un número entero. Dado el crecimiento exponencial, la generación se resolvió mediante un método recursivo que construye las cadenas carácter por carácter hasta alcanzar la longitud máxima ingresada por el usuario. (Ver Figura 6)
 
+<p align="center">
 ![Image](https://github.com/user-attachments/assets/6a0dbc3c-6c87-4486-b298-be15e1968cbb)
+
+</p>
  <div align="center">Figura 6</div> 
  
 ### 4. Exportación de Resultados en archivo tipo .txt
