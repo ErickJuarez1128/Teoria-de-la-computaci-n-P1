@@ -76,31 +76,34 @@ Para el primer requerimiento, se desarrolló una interfaz donde el usuario ingre
 La lógica detrás de este módulo se controló mediante una estructura `if-else` que evalúa la opción seleccionada. Para los prefijos y sufijos, se implementaron ciclos `for` anidados que extraen los caracteres según los límites correspondientes, contemplando siempre el símbolo vacío ($\lambda$). (Ver Figura 3 y 4)
 
 <p align="center">
-![Image](https://github.com/user-attachments/assets/407d7e3a-c27f-4d68-8bd0-2abe463a4338)
-
+  <img src="https://github.com/user-attachments/assets/407d7e3a-c27f-4d68-8bd0-2abe463a4338">
+  <br>
+  Figura 3
 </p>
-<div align="center"> Figura 3</div>
+
 <p align="center">
-![Image](https://github.com/user-attachments/assets/690ec703-5275-4240-8a29-111f6c6b9d73)
-
+  <img src="https://github.com/user-attachments/assets/690ec703-5275-4240-8a29-111f6c6b9d73">
+  <br>
+  Figura 4
 </p>
-<div align="center"> Figura 4</div>
 
 ### 3. Módulo de Generación: Cerradura de Kleene y Positiva 
 El cálculo de lenguajes formales se gestionó en una ventana independiente. Aquí, el usuario ingresa un alfabeto (separado por comas) y un límite numérico para la longitud máxima de las cadenas a generar. (Ver Figura 5)
 
 <p align="center">
-![Image](https://github.com/user-attachments/assets/7e0da5cf-b953-4743-8895-367e9008c040)
+  <img src="https://github.com/user-attachments/assets/7e0da5cf-b953-4743-8895-367e9008c040">
+  <br>
+  Figura 5
 </p>
- <div align="center">Figura 5</div> 
+
 Para generar las combinaciones de la Cerradura de Kleene y la Positiva, se extrae el alfabeto y se convierte el límite a un número entero. Dado el crecimiento exponencial, la generación se resolvió mediante un método recursivo que construye las cadenas carácter por carácter hasta alcanzar la longitud máxima ingresada por el usuario. (Ver Figura 6)
 
 <p align="center">
-![Image](https://github.com/user-attachments/assets/6a0dbc3c-6c87-4486-b298-be15e1968cbb)
-
+  <img src="https://github.com/user-attachments/assets/6a0dbc3c-6c87-4486-b298-be15e1968cbb">
+  <br>
+  Figura 6
 </p>
- <div align="center">Figura 6</div> 
- 
+
 ### 4. Exportación de Resultados en archivo tipo .txt
 Para cumplir con el requerimiento de persistencia de datos, se implementó una función de exportación en ambas ventanas de la aplicación. Esta funcionalidad permite al usuario guardar el histórico de las operaciones mostradas en pantalla para su posterior revisión.
 
