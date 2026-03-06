@@ -59,10 +59,10 @@ Se diseñó una pantalla de inicio intuitiva que permite al usuario seleccionar 
 (Ver Figura 1)
 
 <p align="center">
-![Image](https://github.com/user-attachments/assets/b9247299-8dbd-4aa3-8850-49ffb0b6efe4)
+  <img src="https://github.com/user-attachments/assets/b9247299-8dbd-4aa3-8850-49ffb0b6efe4">
+  <br>
+  Figura 1
 </p>
-
-<div align="center"> Figura 1</div>
 Al presionar cualquiera de los botones, el sistema oculta la ventana actual e instancia la clase correspondiente (`Subcadenas` o `Cerraduras`), centrando la nueva ventana en pantalla.
 
 ### 2. Módulo de Operaciones: Subcadenas, Prefijos y Sufijos
