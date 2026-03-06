@@ -69,7 +69,7 @@ Al presionar cualquiera de los botones, el sistema oculta la ventana actual e in
 Para el primer requerimiento, se desarrolló una interfaz donde el usuario ingresa una cadena de texto base. Mediante un componente `JComboBox`, se puede elegir la operación específica a realizar. (Ver Figura 2)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/e19c2dc1-cf26-4e74-9437-9b8287f733f3">
+  <img src="https://github.com/user-attachments/assets/4181d81b-f245-400e-9d69-0b7de6239579">
   <br>
   Figura 2
 </p>
@@ -91,7 +91,7 @@ La lógica detrás de este módulo se controló mediante una estructura `if-else
 El cálculo de lenguajes formales se gestionó en una ventana independiente. Aquí, el usuario ingresa un alfabeto (separado por comas) y un límite numérico para la longitud máxima de las cadenas a generar. (Ver Figura 5)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/7e0da5cf-b953-4743-8895-367e9008c040">
+  <img src="https://github.com/user-attachments/assets/efca892f-7343-4c4a-a150-9ee7b7765e34">
   <br>
   Figura 5
 </p>
