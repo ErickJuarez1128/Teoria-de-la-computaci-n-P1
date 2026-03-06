@@ -36,18 +36,33 @@ $$A^+ = A^1 \cup A^2 \cup A^3 \cup \dots \cup A^n$$
 
 ## Instrucciones de Ejecución
 
-Para poder ejecutar esta aplicación, es necesario contar con el **Java Development Kit (JDK)** instalado en el equipo.
+Para poder ejecutar esta aplicación, es necesario contar con el **Java Development Kit (JDK)** instalado en el equipo en version 25.0.2.
 
-### Desde el IDE (NetBeans versión más reciente de preferencia)
-### Requisitos del Sistema 
-Para compilar y ejecutar este proyecto correctamente, se requiere el siguiente entorno: **Lenguaje:** Java 8 (JDK 1.8) o superior. 
- **Entorno de Desarrollo (IDE):** NetBeans IDE 8.2 o cualquier versión reciente de Apache NetBeans.
-1. Abre tu entorno de desarrollo Apache NetBeans.
-2. Dirígete al menú superior y selecciona `File` > `Open Project...` para abrir la carpeta contenedora del proyecto.
-3. En el panel lateral izquierdo (*Projects*), despliega las carpetas del proyecto hasta llegar a los paquetes fuente (`Source Packages`).
-4. Localiza el archivo principal del proyecto llamado `Lenguajes.java`.
-5. Haz clic derecho sobre el archivo `Lenguajes.java` y selecciona la opción **"Run File"** (o utiliza el atajo de teclado `Shift + F6`).
-6. El programa compilará y desplegará el Menú Principal para usar el programa.
+* Tener instalado el **Java Development Kit (JDK)**.
+* Las variables de entorno (específicamente el `Path`) deben estar configuradas correctamente en tu sistema para reconocer el comando `java`.
+
+## Instrucciones de Descarga y Ejecución
+
+Puedes encontrar los archivos de este proyecto y el ejecutable en el siguiente repositorio: [https://github.com/emilioplacencia15-art/Teoria-de-la-computacion.git](https://github.com/emilioplacencia15-art/Teoria-de-la-computacion.git)
+
+1. **Descargar el archivo ejecutable:**
+   1.1 Dirígete a la sección de **Releases** (ubicada en el panel lateral derecho de este repositorio).
+   1.2 Haz clic y descarga el archivo llamado `Lenguajes-1.0-SNAPSHOT.jar`.
+
+2. **Abrir la terminal:**
+   2.1 Abre tu consola de comandos (CMD, PowerShell o la terminal de tu sistema operativo).
+   2.2 Navega usando el comando `cd` hasta la carpeta donde guardaste el archivo `.jar`. Por ejemplo, si está en tus descargas:
+     `cd Descargas` o en su defecto `cd Downloads`
+
+3. **Ejecutar el programa:**
+   3.1 Una vez ubicado en la carpeta correcta, escribe el siguiente comando y presiona Enter:
+     `
+     java -jar Lenguajes-1.0-SNAPSHOT.jar
+     `
+
+---
+**Nota para la ejecución:** Si al lanzar el comando el sistema arroja un error indicando que `java` no se reconoce, será necesario revisar la configuración de las variables de entorno de tu equipo.
+
 
 
 ## Desarrollo de la Práctica
@@ -111,6 +126,13 @@ El sistema extrae el texto contenido en el área de resultados (`JTextArea`) y l
 
 Para garantizar la estabilidad del programa, el proceso de escritura se encapsuló dentro de un bloque `try-catch`, el cual previene que la aplicación se cierre inesperadamente si ocurre un error de entrada/salida (`IOException`). Finalmente, mediante un `JOptionPane`, se le muestra al usuario un cuadro de diálogo confirmando el éxito de la operación y la ruta absoluta donde se guardó el archivo en su equipo.
 
+En la interfaz como se observo en la Figura 2 y 5 se encuentra un botón para poder exportar los resultados de las pruebas realizadas en un archivo .txt en donde el mismo programa te indica en que dirección de tu dispositivo se guardo dicho documento, como se aprecia en la Figura 7.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/efe4d9a6-cd01-4c4e-b66d-00b7ad20bfae">
+  <br>
+  Figura 7
+</p>
 
 ##  Conclusión
 
