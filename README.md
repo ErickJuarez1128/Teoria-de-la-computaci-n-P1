@@ -67,12 +67,12 @@ Al presionar cualquiera de los botones, el sistema oculta la ventana actual e in
 
 ### 2. Módulo de Operaciones: Subcadenas, Prefijos y Sufijos
 Para el primer requerimiento, se desarrolló una interfaz donde el usuario ingresa una cadena de texto base. Mediante un componente `JComboBox`, se puede elegir la operación específica a realizar. (Ver Figura 2)
+
 <p align="center">
-
-![Image](https://github.com/user-attachments/assets/e19c2dc1-cf26-4e74-9437-9b8287f733f3)
-
+  <img src="https://github.com/user-attachments/assets/e19c2dc1-cf26-4e74-9437-9b8287f733f3">
+  <br>
+  Figura 2
 </p>
-<div align="center"> Figura 2</div>
 La lógica detrás de este módulo se controló mediante una estructura `if-else` que evalúa la opción seleccionada. Para los prefijos y sufijos, se implementaron ciclos `for` anidados que extraen los caracteres según los límites correspondientes, contemplando siempre el símbolo vacío ($\lambda$). (Ver Figura 3 y 4)
 
 <p align="center">
