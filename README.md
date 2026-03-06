@@ -88,7 +88,7 @@ Para el primer requerimiento, se desarrolló una interfaz donde el usuario ingre
   <br>
   Figura 2
 </p>
-La lógica detrás de este módulo se controló mediante una estructura `if-else` que evalúa la opción seleccionada. Para los prefijos y sufijos, se implementaron ciclos `for` anidados que extraen los caracteres según los límites correspondientes, contemplando siempre el símbolo vacío (λ). (Ver Figura 3 y 4)
+La lógica detrás de este módulo se controló mediante una estructura `if-else` que evalúa la opción seleccionada. Para los prefijos y sufijos, se implementaron ciclos `for` anidados que extraen los caracteres según los límites correspondientes, contemplando siempre el símbolo vacío (). (Ver Figura 3 y 4)
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/407d7e3a-c27f-4d68-8bd0-2abe463a4338">
