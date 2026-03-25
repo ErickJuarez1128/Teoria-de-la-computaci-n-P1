@@ -9,10 +9,10 @@
 ## Introducción
 La presente práctica aborda de manera integral el diseño, análisis y simulación de los **Autómatas Finitos** como pilares de la teoría de la computación. La práctica se divide en dos fases fundamentales que conectan la teoría con la implementación práctica:
 
-### Fase 1: Análisis y Conversión en JFLAP
+### Análisis y Conversión en JFLAP
 En esta etapa se realiza la implementación de modelos de **Autómatas Finitos No Deterministas (AFND)** y **AFND con transiciones lambda ($\lambda$)**. El enfoque principal es comprender la flexibilidad del no-determinismo y dominar los procesos de conversión sistemática hacia **Autómatas Finitos Deterministas (AFD)**, evaluando en cada paso la eficiencia en términos de número de estados y complejidad de transiciones.
 
-### Fase 2: Desarrollo del Simulador Integral
+### Desarrollo del Simulador Integral
 La segunda parte consiste en la creación de una aplicación robusta con interfaz gráfica (GUI) diseñada para actuar como un entorno de ejecución de AFD. La aplicación permite:
 * **Gestión de Formatos**: Importación y exportación de autómatas en archivos `.jff` (JFLAP), `.json` y `.xml`.
 * **Definición Dinámica**: Herramientas para que el usuario defina manualmente el alfabeto, los estados, la función de transición (mediante matrices interactivas) y los estados de aceptación.
