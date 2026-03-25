@@ -122,7 +122,7 @@ Como complemento al simulador, se integraron herramientas para el análisis ató
   <br>
   Figura 7
 </p>
-Lo anterior se hizo en la Práctica 1  la cual fue especifica para estas los partes anteriores, a lo cual se puede entender mejor su funcionamiento en el reporte anterior.
+Estas funcionalidades fueron desarrolladas desde la Práctica 1, por lo que su funcionamiento se detalla en el reporte correspondiente.
 
 ## Conclusión
 
