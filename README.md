@@ -1,140 +1,136 @@
 <div align="center">
-  <h1>Práctica 1.- Operaciones Básicas sobre Lenguajes con Interfaz Gráfica</h1>
-  <p><i>Reporte de práctica hecho en Java Swing</i></p>
+  <h1>Práctica 2.- Construcción de Autómatas Finitos con Interfaz Gráfica para distintos lenguajes</h1>
    <p><i>Juárez Velázquez Erick Daniel 2025630052</i></p>
    <p><i>Placencia Murguia Juan Emilio 2025630024</i></p>
 </div>
 
 ---
 
-##  Introducción
+## Introducción
+La presente práctica aborda de manera integral el diseño, análisis y simulación de los **Autómatas Finitos** como pilares de la teoría de la computación. La práctica se divide en dos fases fundamentales que conectan la teoría con la implementación práctica:
 
-En la asignatura de Teoría de la Computación, el estudio de los lenguajes formales comienza con la comprensión de cómo se estructuran y generan las cadenas a partir de un alfabeto dado ($\Sigma$). Una cadena es una secuencia finita de símbolos, y su manipulación es fundamental para áreas como la construcción de compiladores y el procesamiento de lenguajes.
+### Fase 1: Análisis y Conversión en JFLAP
+En esta etapa se realiza la implementación de modelos de **Autómatas Finitos No Deterministas (AFND)** y **AFND con transiciones lambda ($\lambda$)**. El enfoque principal es comprender la flexibilidad del no-determinismo y dominar los procesos de conversión sistemática hacia **Autómatas Finitos Deterministas (AFD)**, evaluando en cada paso la eficiencia en términos de número de estados y complejidad de transiciones.
 
-Esta práctica consiste en una herramienta desarrollada con una Interfaz Gráfica de Usuario  utilizando Java Swing. La aplicación permite automatizar operaciones lógicas y generativas sobre alfabetos y cadenas, dividiéndose en dos módulos principales:
+### Fase 2: Desarrollo del Simulador Integral
+La segunda parte consiste en la creación de una aplicación robusta con interfaz gráfica (GUI) diseñada para actuar como un entorno de ejecución de AFD. La aplicación permite:
+* **Gestión de Formatos**: Importación y exportación de autómatas en archivos `.jff` (JFLAP), `.json` y `.xml`.
+* **Definición Dinámica**: Herramientas para que el usuario defina manualmente el alfabeto, los estados, la función de transición (mediante matrices interactivas) y los estados de aceptación.
+* **Simulación Visual**: Validación de cadenas con soporte para ejecución paso a paso, permitiendo visualizar el estado actual y la transición tomada en tiempo real.
+* **Análisis Lingüístico**: Funcionalidades adicionales para el cálculo de subcadenas, prefijos, sufijos y la generación de lenguajes mediante cerraduras de Kleene ($\Sigma^*$) y positiva ($\Sigma^+$).
 
-### 1. Análisis de Cadenas 
-El sistema descompone una cadena de entrada para identificar sus componentes esenciales mediante algoritmos de manipulación de arreglos y sub-secuencias:
-* **Prefijos:** Cadenas obtenidas al eliminar cero o más símbolos del final.
-* **Sufijos:** Cadenas obtenidas al eliminar cero o más símbolos del inicio.
-* **Subcadenas:** Secuencias de símbolos contiguos dentro de la cadena original.
+## Objetivo
+El propósito de esta práctica es profundizar en la comprensión y aplicación de los Autómatas Finitos No Deterministas (AFND) mediante el uso de JFLAP, y desarrollar una aplicación con interfaz gráfica que permita simular Autómatas Finitos Deterministas (AFD) a partir de diferentes formatos de entrada.
 
-### 2. Generación de Lenguajes 
-Se implementa la lógica para generar conjuntos de cadenas basados en las potencias de un alfabeto. Para efectos de esta práctica, las operaciones se presentan de forma explícita según las siguientes definiciones matemáticas:
+## Instrucciones de ejecución
 
-<div align="center">
+Para poder ejecutar el programa es necesario contar con Java instalado en el sistema. La versión con la que fue desarrollado y probado es OpenJDK 25, aunque debería funcionar sin problema con versiones recientes del JDK (se recomienda JDK 17 en adelante). Para verificar que Java esté instalado correctamente, puedes correr el siguiente comando en la terminal:
+```
+java --version
+```
 
-**Cerradura de Kleene ($A^*$)**
-$$A^* = A^0 \cup A^1 \cup A^2 \cup A^3 \cup \dots \cup A^n$$
+Una vez confirmado, hay que abrir una terminal y navegar hasta la carpeta del proyecto, que se llama `Lenguajes`. Dentro de ella, entrar a la carpeta `target`, que es donde se encuentra el archivo `.jar` generado:
+```
+cd ruta/hacia/Lenguajes/target
+```
 
+Ya estando en esa ubicación, ejecutar el programa con el siguiente comando:
+```
+java -jar Lenguajes-1.0-SNAPSHOT.jar
+```
+Una vez indicada la linea de comando el programa se abrirá automaticamente.
+**NOTA:** Se recomienda hacerlo de esta forma ya que ejecutando directamente el archivo en un Explorador de Archivos puede no ejecutarse de forma correcta y mostrar algún error, a lo cual al ser ejecutado mediante la terminal no presentara ningún problema.
 
+## Desarrollo de la práctica
+### Arquitectura del Autómata
 
-**Cerradura Positiva ($A^+$)**
-$$A^+ = A^1 \cup A^2 \cup A^3 \cup \dots \cup A^n$$
+El núcleo del simulador se basa en la representación directa de la quíntupla matemática de un Autómata Finito Determinista. Para lograr esto mediante programación orientada a objetos, la lógica se estructuró en tres componentes principales:
 
-</div>
-
-## Instrucciones de Ejecución
-
-Para poder ejecutar esta aplicación, es necesario contar con el **Java Development Kit (JDK)** instalado en el equipo en version 25.0.2.
-
-* Tener instalado el **Java Development Kit (JDK)**.
-* Las variables de entorno (específicamente el `Path`) deben estar configuradas correctamente en tu sistema para reconocer el comando `java`.
-
-## Instrucciones de Descarga y Ejecución
-
-Puedes encontrar los archivos de este proyecto y el ejecutable en el siguiente repositorio: [https://github.com/emilioplacencia15-art/Teoria-de-la-computacion.git](https://github.com/emilioplacencia15-art/Teoria-de-la-computacion.git)
-
-1. **Descargar el archivo ejecutable:**
-   * Dirígete a la sección de **Releases** (ubicada en el panel lateral derecho de este repositorio).
-   * Haz clic y descarga el archivo llamado `Lenguajes-1.0-SNAPSHOT.jar`.
-
-2. **Abrir la terminal:**
-   * Abre tu consola de comandos (CMD, PowerShell o la terminal de tu sistema operativo).
-   * Navega usando el comando `cd` hasta la carpeta donde guardaste el archivo `.jar`. Por ejemplo, si está en tus descargas:
-     `cd Descargas` o en su defecto `cd Downloads`
-
-3. **Ejecutar el programa:**
-   * Una vez ubicado en la carpeta correcta, escribe el siguiente comando y presiona Enter:
-     `
-     java -jar Lenguajes-1.0-SNAPSHOT.jar
-     `
-
----
-**Nota para la ejecución:** Si al lanzar el comando el sistema arroja un error indicando que `java` no se reconoce, será necesario revisar la configuración de las variables de entorno de tu equipo.
-
-
-
-## Desarrollo de la Práctica
-
-Para abordar los requerimientos de la práctica, el proyecto se dividió en tres ventanas principales utilizando la biblioteca Java Swing para la interfaz gráfica. La clase principal `Lenguajes.java` se encarga de instanciar y hacer visible el menú de inicio, estableciendo el punto de partida de la ejecución.
-
-### 1. Menú Principal e Interfaz de Navegación
-Se diseñó una pantalla de inicio intuitiva que permite al usuario seleccionar qué tipo de operación desea realizar. Esta ventana actúa como un enrutador hacia los dos módulos principales de la aplicación.
-(Ver Figura 1)
-
+* **Estado:** Define los nodos del grafo. Además de guardar su identificador, almacena sus coordenadas espaciales para el renderizado en la interfaz gráfica y banderas booleanas para determinar si es el estado inicial o si pertenece al conjunto de aceptación.
+* **Transición:** Materializa la función de transición, enlazando un estado de origen con uno de destino condicionado a la lectura de un símbolo del alfabeto.
+* **Automata:** Es el contenedor principal que agrupa las listas dinámicas de estados y transiciones, gestionando el punto de arranque y ejecutando el motor de validación principal.
+Esta parte se puede apreciar en la Figura No. 1.
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/b9247299-8dbd-4aa3-8850-49ffb0b6efe4">
+  <img src="https://github.com/user-attachments/assets/04d87558-0991-4b17-aca1-620b39795602">
   <br>
   Figura 1
 </p>
-Al presionar cualquiera de los botones, el sistema oculta la ventana actual e instancia la clase correspondiente (`Subcadenas` o `Cerraduras`), centrando la nueva ventana en pantalla.
 
-### 2. Módulo de Operaciones: Subcadenas, Prefijos y Sufijos
-Para el primer requerimiento, se desarrolló una interfaz donde el usuario ingresa una cadena de texto base. Mediante un componente `JComboBox`, se puede elegir la operación específica a realizar. (Ver Figura 2)
+El proceso de simulación consume la cadena de entrada carácter por carácter. En cada paso, el algoritmo busca una transición válida para el estado actual y el símbolo leído; si al terminar de evaluar toda la cadena el sistema se encuentra posicionado en un estado final, se aprueba la validación. (Ver Figura 2)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/4181d81b-f245-400e-9d69-0b7de6239579">
+  <img src="https://github.com/user-attachments/assets/0e949f97-e3c1-4b56-bbe4-1a0f372daa1c">
   <br>
   Figura 2
 </p>
+ 
+ ### Lienzo Interactivo y Diseño de Grafos
 
-La lógica detrás de este módulo se controló mediante una estructura `if-else` que evalúa la opción seleccionada. Para los prefijos y sufijos, se implementaron ciclos `for` anidados que extraen los caracteres según los límites correspondientes, contemplando siempre el símbolo vacío (λ). (Ver Figura 3 y 4)
+La interfaz permite la construcción visual de autómatas donde se gestiona la interacción del usuario con los elementos del grafo de manera dinámica:
+
+* **Manipulación de Estados:** El usuario puede crear estados haciendo clic sobre el área de trabajo y reubicarlos mediante eventos de arrastre (*drag and drop*). Cada estado se renderiza como un nodo circular con su etiqueta correspondiente.
+* **Trazado de Transiciones:** Las conexiones se realizan seleccionando un estado de origen y uno de destino. El sistema detecta automáticamente si se trata de una transición a un estado distinto o un bucle (auto-transición), dibujando curvas o líneas rectas según sea necesario.
+* **Renderizado en Tiempo Real:** Se utiliza la API de Java 2D para refrescar constantemente el lienzo, permitiendo que cualquier cambio en la estructura (como mover un estado) actualice automáticamente la posición de las flechas de transición. (Ver Figura 3)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/407d7e3a-c27f-4d68-8bd0-2abe463a4338">
+  <img src="https://github.com/user-attachments/assets/67257bf8-c549-465a-bf51-de52befebe0a">
   <br>
   Figura 3
 </p>
 
+Persistencia de Archivos y Compatibilidad
+
+El sistema implementa una capa de gestión de datos robusta que permite la interoperabilidad con herramientas académicas externas. A través de la clase `IOAutomata`, se gestionan tres formatos de serialización distintos:
+
+* **Formato JFF (JFLAP):** Permite la exportación e importación directa con JFLAP. El sistema procesa la estructura XML nativa de estos archivos, mapeando los estados y transiciones para que el diseño sea totalmente funcional en ambas plataformas.
+* **Formato JSON:** Se utiliza para una persistencia ligera y moderna, ideal para el intercambio de datos en aplicaciones web o inspección rápida de la estructura del autómata.
+* **Formato XML Genérico:** Proporciona una estructura jerárquica clara del autómata, facilitando su lectura por otros sistemas y asegurando que ninguna propiedad del grafo se pierda durante el guardado. (Ver Figura 4)
+
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/690ec703-5275-4240-8a29-111f6c6b9d73">
+  <img src="https://github.com/user-attachments/assets/bcf44856-d192-45a6-926e-be333d3f1bf9">
   <br>
   Figura 4
 </p>
 
-### 3. Módulo de Generación: Cerradura de Kleene y Positiva 
-El cálculo de lenguajes formales se gestionó en una ventana independiente. Aquí, el usuario ingresa un alfabeto (separado por comas) y un límite numérico para la longitud máxima de las cadenas a generar. (Ver Figura 5)
+Esta capacidad multi-formato asegura que los ejercicios de la **Lista 2** puedan ser verificados, respaldados y compartidos sin depender de un único entorno de ejecución. 
+
+### Motor de Simulación y Validación de Cadenas
+
+El componente central para la evaluación de lenguajes permite verificar la pertenencia de una cadena al lenguaje regular definido por el autómata. Este proceso se gestiona mediante dos modalidades:
+
+* **Validación Individual:** Un algoritmo recorre la estructura del grafo partiendo del estado inicial, consumiendo los símbolos de la cadena de entrada uno a uno. La aceptación se determina si, tras agotar la cadena, el autómata se posiciona en un estado marcado como final.
+* **Pruebas Masivas (TestAutomataFrame):** Interfaz diseñada para la evaluación por lotes, donde el usuario puede ingresar múltiples cadenas simultáneamente. El sistema devuelve un reporte tabular de "Aceptada" o "Rechazada", facilitando la validación de los casos de prueba requeridos por la práctica. (Ver Figura 5).
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/efca892f-7343-4c4a-a150-9ee7b7765e34">
+  <img src="https://github.com/user-attachments/assets/d86b12a5-751a-4735-a09c-b3f708d55fbe">
   <br>
   Figura 5
 </p>
 
-Para generar las combinaciones de la Cerradura de Kleene y la Positiva, se extrae el alfabeto y se convierte el límite a un número entero. Dado el crecimiento exponencial, la generación se resolvió mediante un método recursivo que construye las cadenas carácter por carácter hasta alcanzar la longitud máxima ingresada por el usuario. (Ver Figura 6)
+### Herramientas de Lenguajes Formales
 
+Como complemento al simulador, se integraron herramientas para el análisis atómico de cadenas y operaciones de cerradura, fundamentales en la teoría de la computación:
+
+* **Análisis de Subcadenas:** Un módulo dedicado a la descomposición de una cadena de entrada para extraer todos sus prefijos, sufijos y subcadenas posibles, incluyendo la cadena vacía (ε).
+* **Cerraduras de Kleene y Positiva:** Algoritmos que generan las potencias del alfabeto o lenguaje ($L^*$ y $L^+$), permitiendo visualizar las combinaciones finitas de símbolos hasta un límite definido por el usuario. 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/6a0dbc3c-6c87-4486-b298-be15e1968cbb">
+  <img src="https://github.com/user-attachments/assets/4181d81b-f245-400e-9d69-0b7de6239579">
   <br>
   Figura 6
-</p>
-
-### 4. Exportación de Resultados en archivo tipo .txt
-Para cumplir con el requerimiento de persistencia de datos, se implementó una función de exportación en ambas ventanas de la aplicación. Esta funcionalidad permite al usuario guardar el histórico de las operaciones mostradas en pantalla para su posterior revisión.
-
-El sistema extrae el texto contenido en el área de resultados (`JTextArea`) y lo escribe directamente en un archivo con extensión `.txt` (como `Resultados_Subcadenas.txt` o `Resultados_Cerraduras.txt`). 
-
-Para garantizar la estabilidad del programa, el proceso de escritura se encapsuló dentro de un bloque `try-catch`, el cual previene que la aplicación se cierre inesperadamente si ocurre un error de entrada/salida (`IOException`). Finalmente, mediante un `JOptionPane`, se le muestra al usuario un cuadro de diálogo confirmando el éxito de la operación y la ruta absoluta donde se guardó el archivo en su equipo.
-
-En la interfaz como se observo en la Figura 2 y 5 se encuentra un botón para poder exportar los resultados de las pruebas realizadas en un archivo .txt en donde el mismo programa te indica en que dirección de tu dispositivo se guardo dicho documento, como se aprecia en la Figura 7.
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/efe4d9a6-cd01-4c4e-b66d-00b7ad20bfae">
+  <br>
+  <img src="https://github.com/user-attachments/assets/efca892f-7343-4c4a-a150-9ee7b7765e34">
   <br>
   Figura 7
 </p>
+Lo anterior se hizo en la Práctica 1  la cual fue especifica para estas los partes anteriores, a lo cual se puede entender mejor su funcionamiento en el reporte anterior.
 
-##  Conclusión
+## Conclusiones
 
-Desarrollar esta herramienta en Java Swing nos permitió consolidar la transición de la teoría pura a una aplicación práctica y tangible. Durante el proceso, logramos representar la estructura de las cadenas matemáticamente y en código, entendiendo a fondo cómo los prefijos y sufijos sientan las bases del análisis léxico. Además, al momento de implementar las cerraduras, comprobamos de primera mano la importancia de la eficiencia computacional, pues se vuelve vital controlar los límites de iteración cuando se trabaja con lenguajes que crecen de forma exponencial. Todo este trabajo lógico se complementó muy bien con la interfaz gráfica, la cual terminó facilitando la interacción y permitiendo probar diferentes alfabetos de manera intuitiva.
+La realización de esta práctica permitió integrar satisfactoriamente los fundamentos teóricos de los lenguajes regulares con el desarrollo de software técnico:
+
+* **Modelado Formal**: Se logró traducir la quintupla matemática de un AFD en una arquitectura de software funcional capaz de validar cadenas con precisión determinista.
+* **Multiplicidad**: La implementación de soporte para formatos `.jff`, `.json` y `.xml` garantiza la compatibilidad del simulador con herramientas estándar como JFLAP.
+* **Simulación Visual**: La interfaz gráfica desarrollada permite la creación dinámica de autómatas y una comprensión profunda de su comportamiento mediante la validación y el rastro de estados.
+* **Análisis de Lenguajes**: Las funcionalidades de cerraduras ($\Sigma^*, \Sigma^+$) y la descomposición de cadenas (prefijos, sufijos y subcadenas) extienden la utilidad del sistema como una herramienta didáctica integral.
+
+Este simulador reafirma la importancia de los autómatas finitos como base para el diseño de sistemas computacionales complejos, demostrando que la abstracción matemática es el pilar de la implementación de software robusto.
