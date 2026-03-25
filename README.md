@@ -124,13 +124,7 @@ Como complemento al simulador, se integraron herramientas para el análisis ató
 </p>
 Lo anterior se hizo en la Práctica 1  la cual fue especifica para estas los partes anteriores, a lo cual se puede entender mejor su funcionamiento en el reporte anterior.
 
-## Conclusiones
+## Conclusión
 
-La realización de esta práctica permitió integrar satisfactoriamente los fundamentos teóricos de los lenguajes regulares con el desarrollo de software técnico:
-
-* **Modelado Formal**: Se logró traducir la quintupla matemática de un AFD en una arquitectura de software funcional capaz de validar cadenas con precisión determinista.
-* **Multiplicidad**: La implementación de soporte para formatos `.jff`, `.json` y `.xml` garantiza la compatibilidad del simulador con herramientas estándar como JFLAP.
-* **Simulación Visual**: La interfaz gráfica desarrollada permite la creación dinámica de autómatas y una comprensión profunda de su comportamiento mediante la validación y el rastro de estados.
-* **Análisis de Lenguajes**: Las funcionalidades de cerraduras ($\Sigma^*, \Sigma^+$) y la descomposición de cadenas (prefijos, sufijos y subcadenas) extienden la utilidad del sistema como una herramienta didáctica integral.
-
+La realización de esta práctica permitió integrar satisfactoriamente los fundamentos teóricos de los lenguajes regulares con el desarrollo de software técnico al traducir la quíntupla matemática de un AFD en una arquitectura funcional capaz de validar cadenas con precisión determinista. Gracias a la implementación de soporte para formatos **.jff**, **.json** y **.xml**, el simulador garantiza una compatibilidad total con herramientas estándar como **JFLAP**, mientras que la interfaz gráfica desarrollada facilita la creación dinámica de autómatas y una comprensión profunda de su comportamiento mediante el rastro visual de estados. Finalmente, la inclusión de funcionalidades para el análisis de cerraduras ($\Sigma^*, \Sigma^+$) y la descomposición de cadenas en prefijos, sufijos y subcadenas extiende la utilidad del sistema como una herramienta didáctica integral, reafirmando que la abstracción matemática es el pilar fundamental para la implementación de software robusto en el diseño de sistemas computacionales complejos.
 Este simulador reafirma la importancia de los autómatas finitos como base para el diseño de sistemas computacionales complejos, demostrando que la abstracción matemática es el pilar de la implementación de software robusto.
