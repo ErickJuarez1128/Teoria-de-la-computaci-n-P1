@@ -1,133 +1,168 @@
 <div align="center">
-  <h1>Práctica 2.- Construcción de Autómatas Finitos con Interfaz Gráfica para distintos lenguajes</h1>
+  <h1>Práctica 3: Práctica 3.- Uso de la Herramienta JFLAP para Convertir Autómatas Finitos Deterministas a Expresiones Regulares y Extensión de Software para simular Autómatas No Deterministas, AFN con Transiciones Lambda y Minimización de AFD</h1>
    <p><i>Juárez Velázquez Erick Daniel 2025630052</i></p>
    <p><i>Placencia Murguia Juan Emilio 2025630024</i></p>
 </div>
 
+
+## Introducción 
+Este repositorio alberga el código fuente y la documentación correspondientes a la Práctica 3 de la unidad de aprendizaje de Teoría de la Computaciónl. El propósito de esta práctica es profundizar en la estrecha relación matemática y funcional que existe entre los autómatas finitos y las expresiones regulares, empleando para el análisis previo la herramienta JFLAP. En cuanto a la implementación de software, este proyecto extiende la aplicación con interfaz gráfica en Java Swing desarrollada previamente para incluir la simulación paso a paso de tres formalismos: 
+* **Autómatas Finitos Deterministas (AFD)** 
+* * **Autómatas Finitos No Deterministas (AFND)** 
+* * **Autómatas Finitos No Deterministas con Transiciones Lambda (AFN-λ)** 
+
+Adicionalmente, el programa incorpora un módulo avanzado de optimización que otorga la capacidad de minimizar cualquier AFD dado, reduciendo su número de estados al mínimo equivalente mediante el algoritmo de clases de equivalencia.
+
 ---
 
-## Introducción
-La presente práctica aborda de manera integral el diseño, análisis y simulación de los **Autómatas Finitos** como pilares de la teoría de la computación. La práctica se divide en dos fases fundamentales que conectan la teoría con la implementación práctica:
+##  Objetivos
 
-### Análisis y Conversión en JFLAP
-En esta etapa se realiza la implementación de modelos de **Autómatas Finitos No Deterministas (AFND)** y **AFND con transiciones lambda ($\lambda$)**. El enfoque principal es comprender la flexibilidad del no-determinismo y dominar los procesos de conversión sistemática hacia **Autómatas Finitos Deterministas (AFD)**, evaluando en cada paso la eficiencia en términos de número de estados y complejidad de transiciones.
+### Objetivo General
+Comprender, analizar e implementar computacionalmente los algoritmos fundamentales para la manipulación, transformación y optimización de Autómatas Finitos, demostrando la equivalencia entre distintas representaciones de lenguajes regulares a través del uso de herramientas académicas especializadas y el desarrollo de software orientado a objetos.
 
-### Desarrollo del Simulador Integral
-La segunda parte consiste en la creación de una aplicación robusta con interfaz gráfica (GUI) diseñada para actuar como un entorno de ejecución de AFD. La aplicación permite:
-* **Gestión de Formatos**: Importación y exportación de autómatas en archivos `.jff` (JFLAP), `.json` y `.xml`.
-* **Definición Dinámica**: Herramientas para que el usuario defina manualmente el alfabeto, los estados, la función de transición (mediante matrices interactivas) y los estados de aceptación.
-* **Simulación Visual**: Validación de cadenas con soporte para ejecución paso a paso, permitiendo visualizar el estado actual y la transición tomada en tiempo real.
-* **Análisis Lingüístico**: Funcionalidades adicionales para el cálculo de subcadenas, prefijos, sufijos y la generación de lenguajes mediante cerraduras de Kleene ($\Sigma^*$) y positiva ($\Sigma^+$).
+## Instrucciones de Compilación y Ejecución
 
-## Objetivo
-El propósito de esta práctica es profundizar en la comprensión y aplicación de los Autómatas Finitos No Deterministas (AFND) mediante el uso de JFLAP, y desarrollar una aplicación con interfaz gráfica que permita simular Autómatas Finitos Deterministas (AFD) a partir de diferentes formatos de entrada.
+Para garantizar el correcto funcionamiento de la aplicación y evitar conflictos de configuración, se recomienda ejecutar el proyecto directamente desde la terminal del sistema operativo. Aunque el código puede abrirse en entornos de desarrollo, el uso de IDEs como NetBeans podría generar errores inesperados en la carga de dependencias o recursos.
 
-## Instrucciones de ejecución
+### Requisitos Previos
 
-Para poder ejecutar el programa es necesario contar con Java instalado en el sistema. La versión con la que fue desarrollado y probado es OpenJDK 25, aunque debería funcionar sin problema con versiones recientes del JDK (se recomienda JDK 17 en adelante). Para verificar que Java esté instalado correctamente, puedes correr el siguiente comando en la terminal:
-```
-java --version
-```
+* **Java JDK/JRE:** Asegúrate de tener instalada la versión 25 o superior. 
 
-Una vez confirmado, hay que abrir una terminal y navegar hasta la carpeta del proyecto, que se llama `Lenguajes`. Dentro de ella, entrar a la carpeta `target`, que es donde se encuentra el archivo `.jar` generado:
-```
-cd ruta/hacia/Lenguajes/target
+### Ejecución desde la Terminal
+
+1. Abre la terminal o consola de comandos abre la carpeta Proyecto
+2. Una vez dentro de la carpeta Proyecto se debe de seguir lo siguiente
+* cd Lenguajes
+* cd Lenguajes
+* cd target
+4. Por último, ejecuta la aplicación utilizando el siguiente comando:
+
+``` bash
+java -jar Lenguajes-1.0-SNAPSHOT.jar 
 ```
 
-Ya estando en esa ubicación, ejecutar el programa con el siguiente comando:
-```
-java -jar Lenguajes-1.0-SNAPSHOT.jar
-```
-Una vez indicada la linea de comando el programa se abrirá automaticamente.
-**NOTA:** Se recomienda hacerlo de esta forma ya que ejecutando directamente el archivo en un Explorador de Archivos puede no ejecutarse de forma correcta y mostrar algún error, a lo cual al ser ejecutado mediante la terminal no presentara ningún problema.
+##  Extensión de la Aplicación para Simulación de Autómatas No Deterministas
 
-## Desarrollo de la práctica
-### Arquitectura del Autómata
+### 2.1 Simulación de Autómatas No Deterministas (AFND)
 
-El núcleo del simulador se basa en la representación directa de la quíntupla matemática de un Autómata Finito Determinista. Para lograr esto mediante programación orientada a objetos, la lógica se estructuró en tres componentes principales:
+#### Definición y Representación
+Para escalar la aplicación del modelo determinista (AFD) al no determinista (AFND), el cambio estructural más importante radicó en la forma de almacenar y procesar las transiciones en memoria. 
 
-* **Estado:** Define los nodos del grafo. Además de guardar su identificador, almacena sus coordenadas espaciales para el renderizado en la interfaz gráfica y banderas booleanas para determinar si es el estado inicial o si pertenece al conjunto de aceptación.
-* **Transición:** Materializa la función de transición, enlazando un estado de origen con uno de destino condicionado a la lectura de un símbolo del alfabeto.
-* **Automata:** Es el contenedor principal que agrupa las listas dinámicas de estados y transiciones, gestionando el punto de arranque y ejecutando el motor de validación principal.
-Esta parte se puede apreciar en la Figura No. 1.
+En un AFD convencional, la lectura de un símbolo desde un estado específico conduce invariablemente a un único estado destino. Sin embargo, para cumplir con las características de un AFND, la lógica interna se modificó para soportar **múltiples transiciones para un mismo par estado-símbolo**. 
+
+Esto se logró adaptando las estructuras de datos internas para que un solo origen y símbolo puedan apuntar a un conjunto de estados destino simultáneamente, garantizando además mediante validaciones que el alfabeto ingresado se restrinja estrictamente a los caracteres `{0, 1, 2}`.
+
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/04d87558-0991-4b17-aca1-620b39795602">
+  <img src="https://github.com/user-attachments/assets/01c556d4-3788-4ee0-b987-7ee862baab8b">
   <br>
   Figura 1
 </p>
 
-El proceso de simulación consume la cadena de entrada carácter por carácter. En cada paso, el algoritmo busca una transición válida para el estado actual y el símbolo leído; si al terminar de evaluar toda la cadena el sistema se encuentra posicionado en un estado final, se aprueba la validación. (Ver Figura 2)
+A nivel de interfaz gráfica, se amplió el módulo de captura de transiciones para dar libertad al usuario de ingresar estos múltiples estados de forma intuitiva, permitiendo capturar varios destinos en una sola regla.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0e949f97-e3c1-4b56-bbe4-1a0f372daa1c">
+  <img src="https://github.com/user-attachments/assets/9deedcd1-155d-4f8c-b8e9-479baa657150">
   <br>
   Figura 2
 </p>
- 
- ### Lienzo Interactivo y Diseño de Grafos
 
-La interfaz permite la construcción visual de autómatas donde se gestiona la interacción del usuario con los elementos del grafo de manera dinámica:
+#### Visualización del Procesamiento
 
-* **Manipulación de Estados:** El usuario puede crear estados haciendo clic sobre el área de trabajo y reubicarlos mediante eventos de arrastre (*drag and drop*). Cada estado se renderiza como un nodo circular con su etiqueta correspondiente.
-* **Trazado de Transiciones:** Las conexiones se realizan seleccionando un estado de origen y uno de destino. El sistema detecta automáticamente si se trata de una transición a un estado distinto o un bucle (auto-transición), dibujando curvas o líneas rectas según sea necesario.
-* **Renderizado en Tiempo Real:** Se utiliza la API de Java 2D para refrescar constantemente el lienzo, permitiendo que cualquier cambio en la estructura (como mover un estado) actualice automáticamente la posición de las flechas de transición. (Ver Figura 3)
+Para ofrecer una representación clara del comportamiento no determinista, la interfaz gráfica se actualizó para mostrar en tiempo real la evolución de la cadena evaluada. 
+
+Durante la simulación paso a paso, el sistema expone:
+* **Conjunto de Estados Activos:** Un indicador visual en pantalla que muestra exactamente en qué estados se encuentra el autómata de forma simultánea en un instante dado.
+* **Rutas de Ramificación:** El registro de los múltiples caminos tomados durante el procesamiento de la cadena.
+* **Resultado Final:** Al concluir la lectura, el sistema emite de forma clara la aceptación o rechazo de la cadena, validando la aceptación únicamente si al menos uno de los estados en el conjunto activo final corresponde a un estado de aceptación definido.
+
+### 2.2 Simulación de Autómatas No Deterministas con Transiciones Lambda (AFN-λ)
+
+Para soportar este formalismo, la aplicación fue extendida no solo en su motor de evaluación, sino también en su interfaz para permitir el ingreso y la visualización de transiciones vacías (Lambda).
+
+#### Soporte y Representación en la Interfaz
+Se modificó el módulo de captura de transiciones para aceptar un símbolo especial (representado por `λ` o un campo en blanco) que denota la transición nula. Gráficamente, el programa diferencia estas transiciones del resto para que el usuario pueda identificar rápidamente los saltos espontáneos entre estados.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/67257bf8-c549-465a-bf51-de52befebe0a">
+  <img src="https://github.com/user-attachments/assets/9b9acfd9-f698-4b05-9313-e98c604c6219">
   <br>
   Figura 3
 </p>
 
-Persistencia de Archivos y Compatibilidad
+#### Cálculo de la λ-Clausura (Clausura Lambda)
+El núcleo de la simulación del AFN-λ es el algoritmo de **λ-clausura**. Se implementó una función recursiva (o iterativa mediante pilas/colas) que, dado un estado o conjunto de estados, calcula y devuelve todos los estados que son alcanzables transitando *únicamente* a través de transiciones Lambda, incluyéndose a sí mismo.
 
-El sistema implementa una capa de gestión de datos robusta que permite la interoperabilidad con herramientas académicas externas. A través de la clase `IOAutomata`, se gestionan tres formatos de serialización distintos:
-
-* **Formato JFF (JFLAP):** Permite la exportación e importación directa con JFLAP. El sistema procesa la estructura XML nativa de estos archivos, mapeando los estados y transiciones para que el diseño sea totalmente funcional en ambas plataformas.
-* **Formato JSON:** Se utiliza para una persistencia ligera y moderna, ideal para el intercambio de datos en aplicaciones web o inspección rápida de la estructura del autómata.
-* **Formato XML Genérico:** Proporciona una estructura jerárquica clara del autómata, facilitando su lectura por otros sistemas y asegurando que ninguna propiedad del grafo se pierda durante el guardado. (Ver Figura 4)
+La aplicación incluye una opción visual que permite al usuario seleccionar cualquier estado y ver en pantalla cuál es su clausura lambda correspondiente.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/bcf44856-d192-45a6-926e-be333d3f1bf9">
+  <img src="https://github.com/user-attachments/assets/8daff52d-4545-4f1c-a112-5ecdafa025ad">
   <br>
   Figura 4
 </p>
 
-Esta capacidad multi-formato asegura que los ejercicios de la **Lista 2** puedan ser verificados, respaldados y compartidos sin depender de un único entorno de ejecución. 
+#### Adaptación del Algoritmo de Simulación
+El motor de evaluación de cadenas se adaptó para integrar las transiciones lambda siguiendo este flujo en cada paso:
+1. **Aplicar λ-clausura inicial:** Antes de leer cualquier símbolo, el conjunto de estados activos se expande con sus respectivas clausuras lambda.
+2. **Consumo de símbolo:** Se evalúan las transiciones normales con el carácter actual de la cadena.
+3. **Aplicar λ-clausura final:** Al conjunto de estados resultantes se le vuelve a aplicar la clausura lambda para preparar el terreno para la siguiente iteración (o para la evaluación de aceptación final).
 
-### Motor de Simulación y Validación de Cadenas
+### 2.3 Conversión entre Tipos de Autómatas
 
-El componente central para la evaluación de lenguajes permite verificar la pertenencia de una cadena al lenguaje regular definido por el autómata. Este proceso se gestiona mediante dos modalidades:
+Para dotar al simulador de versatilidad analítica y cumplir con los requerimientos de la práctica, se implementaron los algoritmos estándar para transformar modelos complejos en sus equivalentes más simples, garantizando rigurosamente que el lenguaje aceptado siga siendo exactamente el mismo.
 
-* **Validación Individual:** Un algoritmo recorre la estructura del grafo partiendo del estado inicial, consumiendo los símbolos de la cadena de entrada uno a uno. La aceptación se determina si, tras agotar la cadena, el autómata se posiciona en un estado marcado como final.
-* **Pruebas Masivas (TestAutomataFrame):** Interfaz diseñada para la evaluación por lotes, donde el usuario puede ingresar múltiples cadenas simultáneamente. El sistema devuelve un reporte tabular de "Aceptada" o "Rechazada", facilitando la validación de los casos de prueba requeridos por la práctica. (Ver Figura 5).
+#### Conversión de AFND a AFD (Algoritmo de Subconjuntos)
+Se integró el algoritmo de construcción de subconjuntos. A nivel de lógica e interfaz, el programa es capaz de procesar y mostrar la generación de la nueva tabla de transiciones. En este proceso, cada estado del nuevo AFD creado representa un conjunto de estados del AFND original, y el sistema determina automáticamente cuáles de estos nuevos conjuntos se convierten en estados de aceptación.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/d86b12a5-751a-4735-a09c-b3f708d55fbe">
+  <img src="https://github.com/user-attachments/assets/e2225176-644e-4754-b634-6da123b60229">
   <br>
   Figura 5
 </p>
 
-### Herramientas de Lenguajes Formales
-
-Como complemento al simulador, se integraron herramientas para el análisis atómico de cadenas y operaciones de cerradura, fundamentales en la teoría de la computación:
-
-* **Análisis de Subcadenas:** Un módulo dedicado a la descomposición de una cadena de entrada para extraer todos sus prefijos, sufijos y subcadenas posibles, incluyendo la cadena vacía (ε).
-* **Cerraduras de Kleene y Positiva:** Algoritmos que generan las potencias del alfabeto o lenguaje ($L^*$ y $L^+$), permitiendo visualizar las combinaciones finitas de símbolos hasta un límite definido por el usuario. 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/4181d81b-f245-400e-9d69-0b7de6239579">
+  <img src="https://github.com/user-attachments/assets/5ad99fda-5bf7-4a47-ac30-ee440b0ad1af">
   <br>
   Figura 6
-  <br>
-  <img src="https://github.com/user-attachments/assets/efca892f-7343-4c4a-a150-9ee7b7765e34">
+</p>
+
+#### Conversión de AFN-λ a AFND
+Se desarrolló el proceso lógico para transformar un autómata con transiciones vacías en un no determinista tradicional. Esto se logra implementando el algoritmo de eliminación de transiciones lambda, el cual emplea las clausuras previamente calculadas para remapear los destinos válidos y omitir los saltos nulos.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/5c2be62c-fe95-4ad5-bdf0-7da282155abd">
   <br>
   Figura 7
 </p>
-Estas funcionalidades fueron desarrolladas desde la Práctica 1, por lo que su funcionamiento se detalla en el reporte correspondiente.
+
+### 2.4 Funciones Adicionales (Importación, Exportación y Pruebas Múltiples)
+
+Cabe destacar que las funcionalidades de persistencia de datos (importación y exportación de autómatas desde/hacia archivos `.jff` compatibles con JFLAP), así como el módulo de validación masiva de cadenas mediante archivos externos, fueron desarrolladas e integradas exitosamente durante la Práctica 2. 
+
+Para esta entrega, dichas funciones se heredaron estructuralmente y se adaptaron para soportar los nuevos modelos no deterministas, manteniendo un ecosistema de pruebas robusto y eficiente sin necesidad de reescribir el motor base.
+
+### 2.6 Minimización de Autómatas Finitos Deterministas
+
+El módulo de optimización permite reducir un autómata determinista a su mínima expresión (menor número de estados posible) sin alterar el lenguaje que acepta. 
+
+Para lograr esto, se implementó el algoritmo de clases de equivalencia (método de llenado de tabla). El proceso identifica y elimina estados inaccesibles, y posteriormente construye una tabla de pares para descubrir qué estados son indistinguibles entre sí para fusionarlos en un único estado representativo.
+
+#### Visualización y Comparación Lado a Lado
+Cumpliendo con los requerimientos de análisis visual, la interfaz presenta una vista comparativa donde se puede observar el autómata original frente a su versión ya minimizada. El sistema documenta automáticamente cuántos estados fueron eliminados y cuáles grupos de estados fueron consolidados.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3256f878-92bc-49a1-a07e-358bb9607396">
+  <br>
+  Figura 8
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ef6cc2b7-a452-4333-acb7-4b44127e6536">
+  <br>
+  Figura 9
+</p>
 
 ## Conclusión
 
-Esta práctica nos ayudó a entender de forma más clara cómo un autómata finito pasa de ser un concepto teórico a convertirse en algo que realmente funciona en código. Traducir la quíntupla matemática a clases y estructuras de Java no fue trivial, pero el resultado es un simulador que valida cadenas de forma correcta y predecible.
+El desarrollo de esta práctica consolidó la comprensión algorítmica de la teoría de autómatas. La transición de un modelo AFD a uno no determinista (AFND y AFN-λ) exigió rediseñar el motor de procesamiento para evaluar múltiples caminos simultáneos, destacando el uso de la λ-clausura para manejar transiciones vacías.
 
-Algo que nos pareció útil fue el soporte para múltiples formatos, ya que poder importar y exportar en `.jff`, `.json` y `.xml` hace que el programa no quede aislado sino que se pueda usar junto con JFLAP sin problema. La parte visual también aportó bastante, porque ver el autómata dibujado y seguir los estados paso a paso hace que sea mucho más fácil detectar errores en el diseño.
+Asimismo, la implementación de los algoritmos de subconjuntos y de minimización (clases de equivalencia) demostró de forma práctica cómo los autómatas complejos pueden transformarse en máquinas de estados mínimas y optimizadas sin alterar el lenguaje que aceptan. 
 
-En general, la práctica dejó claro que entender bien la teoría es lo que permite implementar software que funcione de verdad, no solo en los casos fáciles sino también en los casos límite.
+En conjunto, la herramienta resultante no solo cumple con los requerimientos de la unidad de aprendizaje, sino que facilita enormemente el análisis y la comprobación visual de estos conceptos matemáticos abstractos.
